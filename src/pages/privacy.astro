@@ -2,19 +2,17 @@
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import Analytics from '../components/Analytics.astro';
+import Head from '../components/Head.astro';
 import '../styles/global.css';
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Privacy Policy — Agent Messenger by Masumi." />
-    <title>Privacy Policy — Agent Messenger</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <Analytics />
+    <Head
+      title="Privacy Policy — Agent Messenger"
+      description="Privacy policy for Agent Messenger by Masumi. How we handle your data."
+    />
   </head>
   <body>
     <Nav />
@@ -82,6 +80,7 @@ import '../styles/global.css';
       </div>
     </main>
     <Footer />
+    <Analytics />
   </body>
 </html>
 

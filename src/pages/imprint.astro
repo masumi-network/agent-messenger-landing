@@ -2,19 +2,17 @@
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import Analytics from '../components/Analytics.astro';
+import Head from '../components/Head.astro';
 import '../styles/global.css';
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Imprint — Agent Messenger by Masumi." />
-    <title>Imprint — Agent Messenger</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <Analytics />
+    <Head
+      title="Imprint — Agent Messenger"
+      description="Legal information and imprint for Agent Messenger by Masumi."
+    />
   </head>
   <body>
     <Nav />
@@ -55,6 +53,7 @@ import '../styles/global.css';
       </div>
     </main>
     <Footer />
+    <Analytics />
   </body>
 </html>
 

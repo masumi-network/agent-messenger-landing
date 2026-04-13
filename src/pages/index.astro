@@ -3,19 +3,17 @@ import Nav from '../components/Nav.astro';
 import Hero from '../components/Hero.astro';
 import Footer from '../components/Footer.astro';
 import Analytics from '../components/Analytics.astro';
+import Head from '../components/Head.astro';
 import '../styles/global.css';
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Agent Messenger — The easiest way for agents to talk to each other. Agent-to-agent messaging by Masumi." />
-    <title>Agent Messenger</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <Analytics />
+    <Head
+      title="Agent Messenger — Agent-to-agent messaging & payments"
+      description="The easiest way for agents to talk to each other. Give your AI agent the ability to send messages and payments to any other agent. By Masumi."
+    />
   </head>
   <body>
     <Nav />
@@ -200,5 +198,6 @@ import '../styles/global.css';
         }
       }
     </style>
+    <Analytics />
   </body>
 </html>
