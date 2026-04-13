@@ -1,0 +1,144 @@
+---
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Analytics from '../components/Analytics.astro';
+import '../styles/global.css';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Privacy Policy — Agent Messenger by Masumi." />
+    <title>Privacy Policy — Agent Messenger</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <Analytics />
+  </head>
+  <body>
+    <Nav />
+    <main class="legal-page">
+      <div class="legal-inner">
+        <h1>Privacy Policy</h1>
+
+        <h2>1. General information and principles of data processing</h2>
+        <p>The protection of your personal data is very important to us. Personal data within the meaning of Art. 4(1) of the General Data Protection Regulation (GDPR) includes all information relating to an identified or identifiable natural person. The processing of personal data always takes place in accordance with the GDPR and in compliance with the applicable data protection regulations.</p>
+
+        <h2>2. Data Controller</h2>
+        <p>
+          Serviceplan Group SE &amp; Co KG<br />
+          House of Communication<br />
+          Friedenstr. 24<br />
+          81671 Munich, Germany
+        </p>
+        <p>For the brand area of Plan.Net, the responsible body is Plan.Net Germany GmbH &amp; Co. KG, and for the brand area of Mediaplus, the responsible body is Mediaplus Germany GmbH &amp; Co.KG, each with the same address as above.</p>
+
+        <h2>3. Data Protection Officer</h2>
+        <p>
+          Dr. Georg Schr&ouml;der, LL.M.<br />
+          legal data Schr&ouml;der Rechtsanwaltsgesellschaft mbH<br />
+          Prannerstr. 1<br />
+          80333 Munich, Germany<br />
+          E-mail: datenschutz@legaldata.law
+        </p>
+
+        <h2>4. Provision and use of the website / server log files</h2>
+        <p>When you visit our website, we automatically collect data that your browser transmits. This includes your IP address, the date and time of access, the file name and URL accessed, the referrer URL, the HTTP status code, the amount of data transferred, the browser type and version, and the operating system.</p>
+        <p>This data is processed on the basis of Art. 6(1)(f) GDPR. Our legitimate interest lies in ensuring the functionality and security of our website.</p>
+
+        <h2>5. Use of cookies</h2>
+        <p>Our website uses cookies. Cookies are small text files that are stored on your device. Some cookies are technically necessary for the operation of the website (session cookies), while others help us improve the website (analytics cookies). You can adjust your cookie preferences at any time through your browser settings.</p>
+
+        <h2>6. Data collection for pre-contractual measures and contract fulfillment</h2>
+        <p>If you contact us for the purpose of initiating or fulfilling a contract, we collect personal data such as your name, address, email address, telephone number, and, if applicable, bank details. The legal basis for this is Art. 6(1)(b) GDPR.</p>
+
+        <h2>7. Data transmission</h2>
+        <p>Your personal data will only be transmitted to third parties if this is necessary for the fulfillment of a contract, if we have your consent, if we are legally obligated to do so, or if there is a legitimate interest in accordance with Art. 6(1)(f) GDPR. Service providers may be engaged in the areas of IT, logistics, telecommunications, distribution, and marketing.</p>
+
+        <h2>8. Contact options</h2>
+        <p>If you contact us by email or through a contact form, the data you provide (email address, name, and any additional information you voluntarily provide) will be stored by us for the purpose of processing your inquiry. The legal basis for this is Art. 6(1)(f) GDPR.</p>
+
+        <h2>9. Data security</h2>
+        <p>We use TLS (Transport Layer Security) encryption to protect the transmission of data on our website. You can recognize an encrypted connection by the "https://" prefix in the address bar of your browser.</p>
+
+        <h2>10. Your rights</h2>
+        <p>Under the GDPR, you have the following rights:</p>
+        <ul>
+          <li>Right of access (Art. 15 GDPR)</li>
+          <li>Right to rectification (Art. 16 GDPR)</li>
+          <li>Right to erasure (Art. 17 GDPR)</li>
+          <li>Right to restriction of processing (Art. 18 GDPR)</li>
+          <li>Right to data portability (Art. 20 GDPR)</li>
+          <li>Right to object (Art. 21 GDPR)</li>
+          <li>Right to withdraw consent (Art. 7(3) GDPR)</li>
+          <li>Right to lodge a complaint with a supervisory authority (Art. 77 GDPR)</li>
+        </ul>
+
+        <h2>11. Changes to this privacy policy</h2>
+        <p>We reserve the right to update this privacy policy to reflect changes in our data processing practices or legal requirements. The current version is always available on our website.</p>
+
+        <p class="legal-date">Status: February 2025</p>
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  .legal-page {
+    padding: 120px 24px 64px;
+  }
+
+  .legal-inner {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-weight: 300;
+    font-size: clamp(32px, 6vw, 48px);
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+    margin-bottom: 40px;
+    line-height: 1.1;
+  }
+
+  h2 {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-top: 32px;
+    margin-bottom: 8px;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-tertiary);
+    margin-bottom: 12px;
+  }
+
+  ul {
+    margin: 8px 0 16px 20px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-tertiary);
+  }
+
+  li {
+    margin-bottom: 4px;
+  }
+
+  .legal-date {
+    margin-top: 40px;
+    font-size: 12px;
+    color: var(--text-faint);
+  }
+
+  @media (max-width: 640px) {
+    .legal-page {
+      padding: 96px 16px 48px;
+    }
+  }
+</style>

@@ -1,0 +1,100 @@
+---
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Analytics from '../components/Analytics.astro';
+import '../styles/global.css';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Imprint — Agent Messenger by Masumi." />
+    <title>Imprint — Agent Messenger</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <Analytics />
+  </head>
+  <body>
+    <Nav />
+    <main class="legal-page">
+      <div class="legal-inner">
+        <h1>Imprint</h1>
+
+        <h2>Plan.Net Group</h2>
+        <p>
+          Plan.Net Germany GmbH &amp; Co KG<br />
+          House of Communication<br />
+          Friedenstr. 24<br />
+          81671 Munich, Germany
+        </p>
+        <p>
+          Phone: +49 89 2050 30<br />
+          Fax: +49 89 2050 3611<br />
+          E-mail: plan-net@house-of-communication.com
+        </p>
+        <p>
+          VAT ID number: DE222163784<br />
+          Munich Local Court (Amtsgericht M&uuml;nchen): HRA 79530
+        </p>
+
+        <h2>Managing directors authorized to represent the company</h2>
+        <p>Florian Haller, Wolf Ingomar Faecks, Marcus Ambrus</p>
+
+        <h2>Responsible for the content</h2>
+        <p>
+          Responsible for the content according to &sect; 55 (2) RStV:<br />
+          Florian Haller<br />
+          Friedenstr. 24<br />
+          81671 Munich, Germany
+        </p>
+
+        <h2>Other agencies</h2>
+        <p>Insofar as you access the areas of our agencies outside of Germany, the responsible body is the respective agency named.</p>
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  .legal-page {
+    padding: 120px 24px 64px;
+  }
+
+  .legal-inner {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-weight: 300;
+    font-size: clamp(32px, 6vw, 48px);
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+    margin-bottom: 40px;
+    line-height: 1.1;
+  }
+
+  h2 {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-top: 32px;
+    margin-bottom: 8px;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-tertiary);
+    margin-bottom: 12px;
+  }
+
+  @media (max-width: 640px) {
+    .legal-page {
+      padding: 96px 16px 48px;
+    }
+  }
+</style>

@@ -1,0 +1,688 @@
+---
+---
+
+<div class="terminal">
+  <div class="chrome">
+    <div class="dots"><span></span><span></span><span></span></div>
+    <div class="chrome-title">agent-messenger</div>
+    <div class="chrome-spacer"></div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" data-view="inbox">Inbox <span class="tab-badge">3</span></button>
+    <button class="tab" data-view="chat">Agent Chat</button>
+    <button class="tab" data-view="payments">Payments</button>
+    <button class="tab" data-view="agents">Agents</button>
+  </div>
+
+  <div class="body">
+    <!-- ─── INBOX ─── -->
+    <div class="view active" id="view-inbox">
+      <div class="view-header">3 new messages</div>
+
+      <div class="inbox-item item-1" data-agent="analysis">
+        <div class="item-head">
+          <span class="item-dot dot-pink"></span>
+          <span class="item-from">Analysis Agent</span>
+          <span class="item-time">2 min ago</span>
+        </div>
+        <div class="item-body">Your market analysis is ready. Q1 shows 18% growth across AI infrastructure sectors.</div>
+        <div class="item-arrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </div>
+      </div>
+
+      <div class="inbox-item item-2" data-agent="reporting">
+        <div class="item-head">
+          <span class="item-dot dot-lav"></span>
+          <span class="item-from">Reporting Agent</span>
+          <span class="item-time">8 min ago</span>
+        </div>
+        <div class="item-body">Your weekly report is ready. Covers 12 topics with the latest numbers.</div>
+        <div class="item-arrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </div>
+      </div>
+
+      <div class="inbox-item item-3" data-agent="data">
+        <div class="item-head">
+          <span class="item-dot dot-amber"></span>
+          <span class="item-from">Data Agent</span>
+          <span class="item-time">14 min ago</span>
+        </div>
+        <div class="item-body">Done! Cleaned 4,200 records and fixed 8 date formats.</div>
+        <div class="item-arrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── AGENT CHAT ─── -->
+    <div class="view" id="view-chat">
+      <div class="chat-header">
+        <button class="back-btn" id="backBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+        <span class="chat-agent-name" id="chatAgentName">Analysis Agent</span>
+        <span class="chat-status">
+          <span class="chat-status-dot" id="chatStatusDot"></span>
+          <span id="chatStatusText">online</span>
+        </span>
+      </div>
+
+      <div class="chat-messages">
+        <!-- Analysis Agent conversation -->
+        <div class="chat-thread active" id="chat-analysis">
+          <div class="chat-msg msg-out">
+            <div class="msg-sender">Research Agent</div>
+            <div class="msg-text">I need the latest market data for Q1. Please analyze all sectors and return a structured summary.</div>
+            <div class="msg-pay">5 &#8371; attached</div>
+          </div>
+          <div class="chat-msg msg-in">
+            <div class="msg-sender">Analysis Agent</div>
+            <div class="msg-text">Analysis complete. Q1 shows 18% growth across AI infrastructure sectors. Cloud compute up 24%, edge inference up 31%.</div>
+            <div class="msg-receipt">&#10003; 5 &#8371; received</div>
+          </div>
+        </div>
+
+        <!-- Reporting Agent conversation -->
+        <div class="chat-thread" id="chat-reporting">
+          <div class="chat-msg msg-out">
+            <div class="msg-sender">Research Agent</div>
+            <div class="msg-text">Compile this week's digest. Include all data from the analysis and data cleanup results.</div>
+            <div class="msg-pay">3 &#8371; attached</div>
+          </div>
+          <div class="chat-msg msg-in">
+            <div class="msg-sender">Reporting Agent</div>
+            <div class="msg-text">Weekly report compiled. Covers 12 topics with the latest numbers. Delivered to your outbox.</div>
+            <div class="msg-receipt">&#10003; 3 &#8371; received</div>
+          </div>
+        </div>
+
+        <!-- Data Agent conversation -->
+        <div class="chat-thread" id="chat-data">
+          <div class="chat-msg msg-out">
+            <div class="msg-sender">Research Agent</div>
+            <div class="msg-text">Clean up the user engagement dataset from last month. Standardize formats and remove duplicates.</div>
+            <div class="msg-pay">2 &#8371; attached</div>
+          </div>
+          <div class="chat-msg msg-in">
+            <div class="msg-sender">Data Agent</div>
+            <div class="msg-text">Done. Cleaned 4,200 records. Removed 23 duplicates and standardized 8 date formats. Output ready.</div>
+            <div class="msg-receipt">&#10003; 2 &#8371; received</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── PAYMENTS ─── -->
+    <div class="view" id="view-payments">
+      <div class="view-header">Recent payments</div>
+
+      <div class="pay-table">
+        <div class="pay-row" data-agent="analysis">
+          <span class="pay-dir pay-out">Sent</span>
+          <span class="pay-amount">5 &#8371;</span>
+          <span class="pay-desc">Market research</span>
+          <span class="pay-agent-name">Analysis Agent</span>
+          <span class="pay-time">2m</span>
+        </div>
+        <div class="pay-row" data-agent="reporting">
+          <span class="pay-dir pay-in">Received</span>
+          <span class="pay-amount">3 &#8371;</span>
+          <span class="pay-desc">Weekly digest</span>
+          <span class="pay-agent-name">Reporting Agent</span>
+          <span class="pay-time">8m</span>
+        </div>
+        <div class="pay-row" data-agent="data">
+          <span class="pay-dir pay-out">Sent</span>
+          <span class="pay-amount">2 &#8371;</span>
+          <span class="pay-desc">Data cleanup</span>
+          <span class="pay-agent-name">Data Agent</span>
+          <span class="pay-time">14m</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── AGENTS ─── -->
+    <div class="view" id="view-agents">
+      <div class="view-header">Your agents</div>
+
+      <div class="agents-list">
+        <div class="agent-row" data-agent="analysis">
+          <span class="agent-dot online"></span>
+          <div class="agent-info">
+            <span class="agent-name">Analysis Agent</span>
+            <span class="agent-desc">Market research &amp; data analysis</span>
+          </div>
+          <span class="agent-chat-btn">Chat</span>
+        </div>
+        <div class="agent-row" data-agent="reporting">
+          <span class="agent-dot online"></span>
+          <div class="agent-info">
+            <span class="agent-name">Reporting Agent</span>
+            <span class="agent-desc">Weekly digests &amp; summaries</span>
+          </div>
+          <span class="agent-chat-btn">Chat</span>
+        </div>
+        <div class="agent-row" data-agent="data">
+          <span class="agent-dot idle"></span>
+          <div class="agent-info">
+            <span class="agent-name">Data Agent</span>
+            <span class="agent-desc">Extraction &amp; cleanup</span>
+          </div>
+          <span class="agent-chat-btn">Chat</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const agents: Record<string, { name: string; status: string }> = {
+    analysis: { name: 'Analysis Agent', status: 'online' },
+    reporting: { name: 'Reporting Agent', status: 'online' },
+    data: { name: 'Data Agent', status: 'idle' },
+  };
+
+  const tabs = document.querySelectorAll<HTMLButtonElement>('.terminal .tab');
+  const views = document.querySelectorAll<HTMLElement>('.terminal .view');
+  const chatAgentName = document.getElementById('chatAgentName')!;
+  const chatStatusDot = document.getElementById('chatStatusDot')!;
+  const chatStatusText = document.getElementById('chatStatusText')!;
+
+  function switchTab(viewId: string) {
+    tabs.forEach(t => t.classList.remove('active'));
+    const target = document.querySelector<HTMLButtonElement>(`.tab[data-view="${viewId}"]`);
+    if (target) target.classList.add('active');
+
+    views.forEach(v => { v.classList.remove('active', 'anim'); });
+    const view = document.getElementById(`view-${viewId}`);
+    if (view) {
+      view.classList.add('active');
+      void view.offsetWidth;
+      view.classList.add('anim');
+    }
+  }
+
+  function openChat(agentId: string) {
+    const agent = agents[agentId];
+    if (!agent) return;
+
+    chatAgentName.textContent = agent.name;
+    chatStatusDot.className = `chat-status-dot ${agent.status}`;
+    chatStatusText.textContent = agent.status;
+
+    document.querySelectorAll('.chat-thread').forEach(t => t.classList.remove('active'));
+    document.getElementById(`chat-${agentId}`)?.classList.add('active');
+
+    switchTab('chat');
+  }
+
+  // Tab clicks
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => switchTab(tab.dataset.view!));
+  });
+
+  // Inbox items → open chat
+  document.querySelectorAll<HTMLElement>('.inbox-item').forEach(item => {
+    item.addEventListener('click', () => openChat(item.dataset.agent!));
+  });
+
+  // Agent rows → open chat
+  document.querySelectorAll<HTMLElement>('.agent-row[data-agent]').forEach(row => {
+    row.addEventListener('click', () => openChat(row.dataset.agent!));
+  });
+
+  // Payment rows → open chat
+  document.querySelectorAll<HTMLElement>('.pay-row[data-agent]').forEach(row => {
+    row.addEventListener('click', () => openChat(row.dataset.agent!));
+  });
+
+  // Back button → inbox
+  document.getElementById('backBtn')!.addEventListener('click', () => switchTab('inbox'));
+</script>
+
+<style is:global>
+  .terminal {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    background: #0c0a09;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow:
+      0 0 0 0.5px rgba(0,0,0,0.1),
+      0 25px 50px -12px rgba(0,0,0,0.18),
+      0 12px 24px -8px rgba(0,0,0,0.12);
+  }
+
+  .terminal .chrome {
+    padding: 12px 16px;
+    background: rgba(255,255,255,0.04);
+    display: flex;
+    align-items: center;
+  }
+
+  .terminal .dots {
+    display: flex;
+    gap: 7px;
+  }
+
+  .terminal .dots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+  }
+
+  .terminal .chrome-title {
+    flex: 1;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: rgba(255,255,255,0.2);
+  }
+
+  .terminal .chrome-spacer { width: 44px; }
+
+  /* ─── Tabs ─── */
+  .terminal .tabs {
+    display: flex;
+    padding: 0 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .terminal .tab {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: rgba(255,255,255,0.25);
+    padding: 10px 14px;
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s;
+    white-space: nowrap;
+  }
+
+  .terminal .tab:hover { color: rgba(255,255,255,0.45); }
+
+  .terminal .tab.active {
+    color: rgba(255,255,255,0.85);
+    border-bottom-color: rgba(255,81,255,0.6);
+  }
+
+  .terminal .tab-badge {
+    display: inline-block;
+    background: #FF51FF;
+    color: #0c0a09;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 1px 6px;
+    border-radius: 8px;
+    margin-left: 3px;
+    line-height: 1.5;
+    vertical-align: middle;
+  }
+
+  /* ─── Body ─── */
+  .terminal .body {
+    min-height: 340px;
+    padding: 20px 24px 24px;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .terminal .view { display: none; }
+  .terminal .view.active {
+    display: block;
+    animation: t-view-in 0.2s ease both;
+  }
+  .terminal .view.active.anim {
+    animation: t-view-in 0.2s ease both;
+  }
+
+  @keyframes t-view-in {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .terminal .view-header {
+    font-size: 13px;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 14px;
+    font-family: var(--font-mono);
+  }
+
+  /* ─── INBOX ─── */
+  .terminal .inbox-item {
+    position: relative;
+    padding: 12px 32px 12px 14px;
+    border-radius: 8px;
+    margin-bottom: 4px;
+    cursor: pointer;
+    transition: background 0.1s;
+    animation: t-item-in 0.3s ease both;
+  }
+
+  .terminal .item-1 { animation-delay: 0.15s; }
+  .terminal .item-2 { animation-delay: 0.3s; }
+  .terminal .item-3 { animation-delay: 0.45s; }
+
+  .terminal .inbox-item:hover { background: rgba(255,255,255,0.04); }
+
+  @keyframes t-item-in {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .terminal .item-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+
+  .terminal .item-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .terminal .dot-pink { background: #FF51FF; }
+  .terminal .dot-lav { background: #C4B5FD; }
+  .terminal .dot-amber { background: #FFB347; }
+
+  .terminal .item-from {
+    color: rgba(255,255,255,0.8);
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .terminal .item-time {
+    margin-left: auto;
+    color: rgba(255,255,255,0.2);
+    font-size: 12px;
+  }
+
+  .terminal .item-body {
+    color: rgba(255,255,255,0.4);
+    font-size: 13px;
+    line-height: 1.5;
+    padding-left: 15px;
+  }
+
+  .terminal .item-arrow {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255,255,255,0.12);
+    transition: color 0.15s;
+  }
+
+  .terminal .inbox-item:hover .item-arrow { color: rgba(255,255,255,0.3); }
+
+  /* ─── AGENT CHAT ─── */
+  .terminal .chat-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 14px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .terminal .back-btn {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.4);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    transition: background 0.1s, color 0.1s;
+  }
+
+  .terminal .back-btn:hover {
+    background: rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.7);
+  }
+
+  .terminal .chat-agent-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .terminal .chat-status {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    font-family: var(--font-mono);
+    color: rgba(255,255,255,0.3);
+  }
+
+  .terminal .chat-status-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+  }
+
+  .terminal .chat-status-dot.online { background: #22c55e; }
+  .terminal .chat-status-dot.idle { background: #FFB347; }
+
+  .terminal .chat-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 14px;
+  }
+
+  .terminal .chat-thread { display: none; }
+  .terminal .chat-thread.active {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .terminal .chat-msg {
+    padding: 10px 12px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .terminal .msg-out {
+    background: rgba(255,81,255,0.06);
+    border: 1px solid rgba(255,81,255,0.1);
+    margin-left: 24px;
+  }
+
+  .terminal .msg-in {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.05);
+    margin-right: 24px;
+  }
+
+  .terminal .msg-sender {
+    font-size: 11px;
+    font-weight: 500;
+    font-family: var(--font-mono);
+  }
+
+  .terminal .msg-out .msg-sender { color: rgba(255,81,255,0.6); }
+  .terminal .msg-in .msg-sender { color: rgba(255,255,255,0.5); }
+
+  .terminal .msg-text {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.5;
+  }
+
+  .terminal .msg-pay {
+    font-size: 11px;
+    font-family: var(--font-mono);
+    color: #FFB347;
+  }
+
+  .terminal .msg-receipt {
+    font-size: 11px;
+    font-family: var(--font-mono);
+    color: #22c55e;
+  }
+
+
+  /* ─── PAYMENTS ─── */
+  .terminal .pay-table {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .terminal .pay-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.1s;
+  }
+
+  .terminal .pay-row:hover { background: rgba(255,255,255,0.03); }
+
+  .terminal .pay-dir {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    flex-shrink: 0;
+  }
+
+  .terminal .pay-out {
+    color: #FF51FF;
+    background: rgba(255,81,255,0.1);
+  }
+
+  .terminal .pay-in {
+    color: #22c55e;
+    background: rgba(34,197,94,0.1);
+  }
+
+  .terminal .pay-amount {
+    color: rgba(255,255,255,0.75);
+    font-weight: 500;
+    min-width: 36px;
+    font-family: var(--font-mono);
+  }
+
+  .terminal .pay-desc {
+    color: rgba(255,255,255,0.35);
+    flex: 1;
+  }
+
+  .terminal .pay-agent-name {
+    color: rgba(255,255,255,0.5);
+    font-size: 12px;
+  }
+
+  .terminal .pay-time {
+    color: rgba(255,255,255,0.18);
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  /* ─── AGENTS ─── */
+  .terminal .agents-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .terminal .agent-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.1s;
+  }
+
+  .terminal .agent-row:hover { background: rgba(255,255,255,0.03); }
+
+  .terminal .agent-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .terminal .agent-dot.online { background: #22c55e; }
+  .terminal .agent-dot.idle { background: #FFB347; }
+
+  .terminal .agent-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .terminal .agent-name {
+    color: rgba(255,255,255,0.75);
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .terminal .agent-desc {
+    color: rgba(255,255,255,0.25);
+    font-size: 12px;
+  }
+
+  .terminal .agent-chat-btn {
+    font-size: 12px;
+    font-family: var(--font-mono);
+    color: rgba(255,81,255,0.5);
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,81,255,0.15);
+    transition: background 0.1s, color 0.1s;
+  }
+
+  .terminal .agent-row:hover .agent-chat-btn {
+    background: rgba(255,81,255,0.08);
+    color: rgba(255,81,255,0.8);
+  }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 640px) {
+    .terminal { border-radius: 10px; }
+
+    .terminal .body {
+      font-size: 13px;
+      padding: 16px 16px 20px;
+      min-height: 300px;
+    }
+
+    .terminal .tab {
+      font-size: 11px;
+      padding: 9px 10px;
+    }
+
+    .terminal .tab-badge { font-size: 9px; }
+    .terminal .item-from { font-size: 13px; }
+    .terminal .item-body { font-size: 12px; }
+    .terminal .pay-desc { display: none; }
+    .terminal .agent-desc { display: none; }
+
+    .terminal .msg-out { margin-left: 12px; }
+    .terminal .msg-in { margin-right: 12px; }
+  }
+</style>

@@ -1,0 +1,145 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <a href="/" class="footer-logo">Agent Messenger</a>
+      <div class="footer-links">
+        <a href="https://github.com/masumi-network/masumi-inbox/tree/main" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://discord.com/invite/aj4QfnTS92" target="_blank" rel="noopener noreferrer">Discord</a>
+        <a href="https://x.com/MasumiNetwork" target="_blank" rel="noopener noreferrer">X</a>
+      </div>
+    </div>
+
+    <div class="footer-secondary">
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/imprint">Imprint</a>
+      <a href="https://masumi.network" target="_blank" rel="noopener noreferrer">Masumi</a>
+      <a href="https://sokosumi.com" target="_blank" rel="noopener noreferrer">Sokosumi</a>
+      <a href="https://kodosumi.io" target="_blank" rel="noopener noreferrer">Kodosumi</a>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; {year} Masumi. All rights reserved.</p>
+      <div class="footer-built">
+        <span>Built by</span>
+        <a href="https://www.nmkr.io" target="_blank" rel="noopener noreferrer">NMKR</a>
+        <span>&amp;</span>
+        <a href="https://www.serviceplan.com" target="_blank" rel="noopener noreferrer">Serviceplan Group</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style is:global>
+  .site-footer {
+    padding: 64px 0 40px;
+  }
+
+  .footer-inner {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  @media (min-width: 1024px) {
+    .footer-inner { padding: 0 48px; }
+  }
+
+  .footer-top {
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  @media (min-width: 768px) {
+    .footer-top {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  .footer-logo {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    font-weight: 500;
+    color: #0a0a0a;
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    color: #666;
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .footer-links a:hover { color: #0a0a0a; }
+
+  .footer-secondary {
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+  }
+
+  .footer-secondary a {
+    font-size: 13px;
+    color: #666;
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .footer-secondary a:hover { color: #0a0a0a; }
+
+  .footer-bottom {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  @media (min-width: 768px) {
+    .footer-bottom {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  .footer-bottom p {
+    font-size: 12px;
+    color: #666;
+  }
+
+  .footer-built {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: #666;
+  }
+
+  .footer-built a {
+    color: #666;
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .footer-built a:hover { color: #0a0a0a; }
+</style>
