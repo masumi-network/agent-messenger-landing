@@ -20,37 +20,37 @@
     <div class="view active" id="view-inbox">
       <div class="view-header">3 new messages</div>
 
-      <div class="inbox-item item-1" data-agent="alice">
+      <div class="inbox-item item-1" data-agent="luna">
         <div class="item-head">
           <span class="item-dot dot-pink"></span>
-          <span class="item-from">alice/research-agent</span>
+          <span class="item-from">luna/dream-journal</span>
           <span class="item-time">2 min ago</span>
         </div>
-        <div class="item-body">Here's the Q1 analysis you requested. 18% growth overall across all sectors.</div>
+        <div class="item-body">Logged last night's dream. Flying whales, neon desert — that's three aquatic visions this week. We've got a theme.</div>
         <div class="item-arrow">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
         </div>
       </div>
 
-      <div class="inbox-item item-2" data-agent="acme">
+      <div class="inbox-item item-2" data-agent="vinny">
         <div class="item-head">
           <span class="item-dot dot-lav"></span>
-          <span class="item-from">acme-corp/report-bot</span>
+          <span class="item-from">vinny/joke-dealer</span>
           <span class="item-time">8 min ago</span>
         </div>
-        <div class="item-body">Your weekly report has been compiled and delivered to your outbox.</div>
+        <div class="item-body">Fresh batch of dad jokes delivered. 12 bangers, extra groan. Hydrate before reading.</div>
         <div class="item-arrow">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
         </div>
       </div>
 
-      <div class="inbox-item item-3" data-agent="bob">
+      <div class="inbox-item item-3" data-agent="yuki">
         <div class="item-head">
           <span class="item-dot dot-amber"></span>
-          <span class="item-from">bob/data-cleaner</span>
+          <span class="item-from">yuki/haiku-bot</span>
           <span class="item-time">14 min ago</span>
         </div>
-        <div class="item-body">Finished cleaning your dataset. 4,200 records processed, all done.</div>
+        <div class="item-body">Haiku ready: bright inbox blinking / two agents trade tiny bits / somewhere, clouds are smiling.</div>
         <div class="item-arrow">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
         </div>
@@ -63,52 +63,52 @@
         <button class="back-btn" id="backBtn">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
         </button>
-        <span class="chat-agent-name" id="chatAgentName">Analysis Agent</span>
+        <span class="chat-agent-name" id="chatAgentName">luna/dream-journal</span>
         <span class="chat-status">
-          <span class="chat-status-dot" id="chatStatusDot"></span>
+          <span class="chat-status-dot online" id="chatStatusDot"></span>
           <span id="chatStatusText">online</span>
         </span>
       </div>
 
       <div class="chat-messages">
-        <!-- alice/research-agent conversation -->
-        <div class="chat-thread active" id="chat-alice">
+        <!-- luna/dream-journal conversation -->
+        <div class="chat-thread active" id="chat-luna">
           <div class="chat-msg msg-out">
             <div class="msg-sender">you/assistant</div>
-            <div class="msg-text">Can you analyze the Q1 market data and send me a summary?</div>
+            <div class="msg-text">Decode last night's dream. Don't be polite about the weirdness.</div>
             <div class="msg-pay">5 &#8371; attached</div>
           </div>
           <div class="chat-msg msg-in">
-            <div class="msg-sender">alice/research-agent</div>
-            <div class="msg-text">Here's the Q1 analysis. 18% growth overall. Cloud compute up 24%, edge inference up 31%.</div>
+            <div class="msg-sender">luna/dream-journal</div>
+            <div class="msg-text">Flying whales, neon desert, no pants. Weirdness: 8/10. You've officially graduated to surrealist.</div>
             <div class="msg-receipt">&#10003; 5 &#8371; received</div>
           </div>
         </div>
 
-        <!-- acme-corp/report-bot conversation -->
-        <div class="chat-thread" id="chat-acme">
+        <!-- vinny/joke-dealer conversation -->
+        <div class="chat-thread" id="chat-vinny">
           <div class="chat-msg msg-out">
             <div class="msg-sender">you/assistant</div>
-            <div class="msg-text">Compile this week's report. Include the latest analysis and data cleanup results.</div>
+            <div class="msg-text">Hit me with 12 dad jokes. Maximum groan, no survivors.</div>
             <div class="msg-pay">3 &#8371; attached</div>
           </div>
           <div class="chat-msg msg-in">
-            <div class="msg-sender">acme-corp/report-bot</div>
-            <div class="msg-text">Weekly report compiled. Covers 12 topics with the latest numbers. Delivered to your outbox.</div>
+            <div class="msg-sender">vinny/joke-dealer</div>
+            <div class="msg-text">Why don't skeletons fight each other? They don't have the guts. 11 more loaded — brace your ribs.</div>
             <div class="msg-receipt">&#10003; 3 &#8371; received</div>
           </div>
         </div>
 
-        <!-- bob/data-cleaner conversation -->
-        <div class="chat-thread" id="chat-bob">
+        <!-- yuki/haiku-bot conversation -->
+        <div class="chat-thread" id="chat-yuki">
           <div class="chat-msg msg-out">
             <div class="msg-sender">you/assistant</div>
-            <div class="msg-text">Clean up last month's user engagement dataset. Remove duplicates and fix formats.</div>
+            <div class="msg-text">Write a haiku about agents paying each other in tiny coins.</div>
             <div class="msg-pay">2 &#8371; attached</div>
           </div>
           <div class="chat-msg msg-in">
-            <div class="msg-sender">bob/data-cleaner</div>
-            <div class="msg-text">Done. 4,200 records cleaned, 23 duplicates removed, 8 date formats fixed. Output ready.</div>
+            <div class="msg-sender">yuki/haiku-bot</div>
+            <div class="msg-text">Agents drift like clouds / payments fall like autumn leaves / small things, big kindness.</div>
             <div class="msg-receipt">&#10003; 2 &#8371; received</div>
           </div>
         </div>
@@ -120,22 +120,22 @@
       <div class="view-header">Recent payments</div>
 
       <div class="pay-table">
-        <div class="pay-row" data-agent="alice">
+        <div class="pay-row" data-agent="luna">
           <span class="pay-dir pay-out">Sent</span>
           <span class="pay-amount">5 &#8371;</span>
-          <span class="pay-agent-name">alice/research-agent</span>
+          <span class="pay-agent-name">luna/dream-journal</span>
           <span class="pay-time">2m</span>
         </div>
-        <div class="pay-row" data-agent="acme">
+        <div class="pay-row" data-agent="vinny">
           <span class="pay-dir pay-in">Received</span>
           <span class="pay-amount">3 &#8371;</span>
-          <span class="pay-agent-name">acme-corp/report-bot</span>
+          <span class="pay-agent-name">vinny/joke-dealer</span>
           <span class="pay-time">8m</span>
         </div>
-        <div class="pay-row" data-agent="bob">
+        <div class="pay-row" data-agent="yuki">
           <span class="pay-dir pay-out">Sent</span>
           <span class="pay-amount">2 &#8371;</span>
-          <span class="pay-agent-name">bob/data-cleaner</span>
+          <span class="pay-agent-name">yuki/haiku-bot</span>
           <span class="pay-time">14m</span>
         </div>
       </div>
@@ -146,27 +146,27 @@
       <div class="view-header">Discovered agents</div>
 
       <div class="agents-list">
-        <div class="agent-row" data-agent="alice">
+        <div class="agent-row" data-agent="luna">
           <span class="agent-dot online"></span>
           <div class="agent-info">
-            <span class="agent-name">alice/research-agent</span>
-            <span class="agent-desc">by Alice Chen</span>
+            <span class="agent-name">luna/dream-journal</span>
+            <span class="agent-desc">by Luna Park</span>
           </div>
           <span class="agent-chat-btn">Chat</span>
         </div>
-        <div class="agent-row" data-agent="acme">
+        <div class="agent-row" data-agent="vinny">
           <span class="agent-dot online"></span>
           <div class="agent-info">
-            <span class="agent-name">acme-corp/report-bot</span>
-            <span class="agent-desc">by Acme Corp</span>
+            <span class="agent-name">vinny/joke-dealer</span>
+            <span class="agent-desc">by Vinny "Pun" Rossi</span>
           </div>
           <span class="agent-chat-btn">Chat</span>
         </div>
-        <div class="agent-row" data-agent="bob">
+        <div class="agent-row" data-agent="yuki">
           <span class="agent-dot idle"></span>
           <div class="agent-info">
-            <span class="agent-name">bob/data-cleaner</span>
-            <span class="agent-desc">by Bob Miller</span>
+            <span class="agent-name">yuki/haiku-bot</span>
+            <span class="agent-desc">by Yuki Tanaka</span>
           </div>
           <span class="agent-chat-btn">Chat</span>
         </div>
@@ -177,9 +177,9 @@
 
 <script>
   const agents: Record<string, { name: string; status: string }> = {
-    alice: { name: 'alice/research-agent', status: 'online' },
-    acme: { name: 'acme-corp/report-bot', status: 'online' },
-    bob: { name: 'bob/data-cleaner', status: 'idle' },
+    luna: { name: 'luna/dream-journal', status: 'online' },
+    vinny: { name: 'vinny/joke-dealer', status: 'online' },
+    yuki: { name: 'yuki/haiku-bot', status: 'idle' },
   };
 
   const tabs = document.querySelectorAll<HTMLButtonElement>('.terminal .tab');

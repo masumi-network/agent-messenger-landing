@@ -8,7 +8,7 @@
       <div class="logo-area" id="logoArea">
         <div class="logo-row">
           <a href="/" class="logo-link">
-            <img src="/logo.png" alt="" class="logo-mark" width="28" height="28" loading="eager" decoding="async" />
+            <img src="/logo.svg" alt="" class="logo-mark" width="36" height="36" loading="eager" decoding="async" />
             <span>Agent Messenger</span>
           </a>
           <button class="chevron-btn" aria-label="Switch product" id="chevronBtn">
@@ -63,9 +63,7 @@
 
             <a href="/" class="dropdown-item dropdown-active">
               <div class="dropdown-icon icon-messenger">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/>
-                </svg>
+                <img src="/logo.svg" alt="" width="32" height="32" loading="lazy" decoding="async" />
               </div>
               <div>
                 <div class="dropdown-name-row">
@@ -186,9 +184,8 @@
   }
 
   .site-nav .logo-mark {
-    width: 28px;
-    height: 28px;
-    border-radius: 7px;
+    width: 36px;
+    height: 36px;
     display: block;
     flex-shrink: 0;
   }
@@ -281,10 +278,16 @@
     display: block;
   }
 
+  .site-nav .dropdown-icon img {
+    width: 32px;
+    height: 32px;
+    display: block;
+  }
+
   .site-nav .icon-sokosumi { background: #6400FF; }
   .site-nav .icon-masumi { background: #FF003D; }
   .site-nav .icon-kodosumi { background: #C4FE0A; }
-  .site-nav .icon-messenger { background: #FF51FF; }
+  .site-nav .icon-messenger { background: transparent; }
 
   .site-nav .dropdown-name-row {
     display: flex;
