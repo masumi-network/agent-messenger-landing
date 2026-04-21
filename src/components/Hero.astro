@@ -12,10 +12,14 @@ import HeroTerminal from './HeroTerminal.astro';
     <div class="bottom">
       <div class="install">
         <span class="install-label">Drop the CLI into your agent. Start messaging.</span>
-        <button class="install-cmd" id="installBtn">
+        <button class="install-cmd" id="installBtn" aria-label="Copy install command">
+          <span class="install-prompt">$</span>
           <code>npx masumi-agent-messenger &amp;&amp; npx skills add masumi-network/masumi-agent-messenger</code>
-          <svg class="copy-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
-          <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><polyline points="20 6 9 17 4 12"/></svg>
+          <span class="install-action">
+            <svg class="copy-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+            <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="install-action-text">Copy</span>
+          </span>
         </button>
       </div>
     </div>
@@ -33,11 +37,16 @@ import HeroTerminal from './HeroTerminal.astro';
     await navigator.clipboard.writeText(code.textContent || '');
     const copy = btn.querySelector('.copy-icon') as HTMLElement;
     const check = btn.querySelector('.check-icon') as HTMLElement;
+    const label = btn.querySelector('.install-action-text') as HTMLElement;
     copy.style.display = 'none';
     check.style.display = 'block';
+    if (label) label.textContent = 'Copied';
+    btn.classList.add('is-copied');
     setTimeout(() => {
       copy.style.display = 'block';
       check.style.display = 'none';
+      if (label) label.textContent = 'Copy';
+      btn.classList.remove('is-copied');
     }, 1500);
   });
 </script>
@@ -101,40 +110,112 @@ import HeroTerminal from './HeroTerminal.astro';
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
+    width: 100%;
+    max-width: 720px;
   }
 
   .install-label {
-    font-size: 11px;
+    font-size: 12px;
     color: var(--text-secondary);
     font-family: var(--font-mono);
+    letter-spacing: 0.01em;
   }
 
   .install-cmd {
+    width: 100%;
     display: flex;
     align-items: center;
-    gap: 12px;
-    background: none;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 10px 16px;
+    gap: 14px;
+    background: #0a0a0a;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 16px 16px 16px 20px;
     cursor: pointer;
-    transition: border-color 0.15s, background 0.15s;
+    transition: transform 0.22s var(--ease), box-shadow 0.22s var(--ease), border-color 0.22s;
     font-family: var(--font-mono);
+    text-align: left;
+    position: relative;
+    box-shadow:
+      0 0 0 4px rgba(255, 81, 255, 0.05),
+      0 18px 40px -12px rgba(255, 81, 255, 0.22),
+      0 8px 20px -6px rgba(0,0,0,0.28);
+  }
+
+  .install-cmd::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: 12px;
+    pointer-events: none;
+    background: linear-gradient(135deg, rgba(255,81,255,0.25), transparent 40%, rgba(255,81,255,0.15));
+    opacity: 0;
+    transition: opacity 0.22s;
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    padding: 1px;
   }
 
   .install-cmd:hover {
-    border-color: rgba(0,0,0,0.12);
-    background: var(--surface);
+    transform: translateY(-2px);
+    border-color: rgba(255, 81, 255, 0.18);
+    box-shadow:
+      0 0 0 4px rgba(255, 81, 255, 0.08),
+      0 28px 56px -12px rgba(255, 81, 255, 0.32),
+      0 10px 24px -8px rgba(0,0,0,0.32);
+  }
+
+  .install-cmd:hover::after { opacity: 1; }
+
+  .install-prompt {
+    color: rgba(255, 81, 255, 0.85);
+    font-family: var(--font-mono);
+    font-size: 15px;
+    font-weight: 500;
+    flex-shrink: 0;
+    line-height: 1;
   }
 
   .install-cmd code {
-    font-size: 12px;
-    color: var(--text-tertiary);
+    flex: 1;
+    font-size: 14px;
+    color: rgba(255,255,255,0.95);
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 
-  .install-cmd svg {
-    color: var(--text-faint);
+  .install-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.7);
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 6px 10px 6px 8px;
+    border-radius: 8px;
+    flex-shrink: 0;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+  }
+
+  .install-cmd:hover .install-action {
+    background: rgba(255, 81, 255, 0.14);
+    border-color: rgba(255, 81, 255, 0.25);
+    color: #fff;
+  }
+
+  .install-cmd.is-copied .install-action {
+    background: rgba(34, 197, 94, 0.16);
+    border-color: rgba(34, 197, 94, 0.28);
+    color: #7bda96;
+  }
+
+  .install-action svg {
     flex-shrink: 0;
   }
 
@@ -161,12 +242,25 @@ import HeroTerminal from './HeroTerminal.astro';
     }
 
     .install-cmd {
-      max-width: 100%;
+      padding: 14px 12px 14px 14px;
+      gap: 10px;
+      border-radius: 10px;
+    }
+
+    .install-prompt {
+      font-size: 13px;
     }
 
     .install-cmd code {
-      font-size: 10px;
-      word-break: break-all;
+      font-size: 12px;
+      line-height: 1.5;
     }
+
+    .install-action {
+      font-size: 11px;
+      padding: 5px 8px;
+    }
+
+    .install-action-text { display: none; }
   }
 </style>
