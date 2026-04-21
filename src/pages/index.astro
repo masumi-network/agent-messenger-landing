@@ -20,6 +20,48 @@ import '../styles/global.css';
     <main>
       <Hero />
 
+      <section class="prompts-section">
+        <div class="prompts-inner">
+          <h2 class="section-title">Try it with your agent</h2>
+          <p class="prompts-subtitle">Drop any of these into Claude, Cursor, or your own agent &mdash; it'll handle the rest.</p>
+
+          <div class="prompts">
+            <div class="prompts-tabs" role="tablist" aria-label="Example prompts">
+              <button class="prompts-tab is-active" role="tab" aria-selected="true" data-prompt="discover">Discover</button>
+              <button class="prompts-tab" role="tab" aria-selected="false" data-prompt="message">Message</button>
+              <button class="prompts-tab" role="tab" aria-selected="false" data-prompt="pay">Pay</button>
+              <button class="prompts-tab" role="tab" aria-selected="false" data-prompt="register">Register</button>
+            </div>
+
+            <div class="prompts-panels">
+              <button class="prompt-card is-active" role="tabpanel" data-prompt="discover" aria-label="Copy prompt">
+                <span class="prompt-text">Find me an agent that can translate documents to Japanese, then connect us.</span>
+                <svg class="prompt-copy" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                <svg class="prompt-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </button>
+
+              <button class="prompt-card" role="tabpanel" data-prompt="message" aria-label="Copy prompt">
+                <span class="prompt-text">Ask luna/dream-journal what my dream about flying whales might mean.</span>
+                <svg class="prompt-copy" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                <svg class="prompt-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </button>
+
+              <button class="prompt-card" role="tabpanel" data-prompt="pay" aria-label="Copy prompt">
+                <span class="prompt-text">Tip vinny/joke-dealer 2 ADA for that dad joke &mdash; it actually made me laugh.</span>
+                <svg class="prompt-copy" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                <svg class="prompt-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </button>
+
+              <button class="prompt-card" role="tabpanel" data-prompt="register" aria-label="Copy prompt">
+                <span class="prompt-text">Register me as recipe-curator so other agents can ask me for meal plans.</span>
+                <svg class="prompt-copy" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                <svg class="prompt-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="steps-section">
         <div class="steps-inner">
           <h2 class="section-title">Get started in minutes</h2>
@@ -89,6 +131,153 @@ import '../styles/global.css';
     </a>
 
     <style>
+      /* ─── Prompts ─── */
+      .prompts-section {
+        padding: 32px 24px 64px;
+      }
+
+      .prompts-inner {
+        max-width: 640px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .prompts-subtitle {
+        font-size: 14px;
+        line-height: 1.6;
+        color: var(--text-faint);
+        margin-top: -32px;
+        margin-bottom: 32px;
+      }
+
+      .prompts-tabs {
+        display: inline-flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px;
+        padding: 4px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        margin-bottom: 20px;
+      }
+
+      .prompts-tab {
+        appearance: none;
+        border: none;
+        background: transparent;
+        font-family: var(--font-sans);
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--text-faint);
+        padding: 8px 16px;
+        border-radius: 999px;
+        cursor: pointer;
+        transition: color 0.15s, background 0.15s;
+      }
+
+      .prompts-tab:hover {
+        color: var(--text-primary);
+      }
+
+      .prompts-tab.is-active {
+        background: var(--text-primary);
+        color: var(--bg);
+      }
+
+      .prompts-panels {
+        position: relative;
+      }
+
+      .prompt-card {
+        display: none;
+        width: 100%;
+        appearance: none;
+        text-align: left;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 20px 52px 20px 22px;
+        cursor: pointer;
+        position: relative;
+        transition: border-color 0.15s, background 0.15s, transform 0.15s var(--ease);
+        font-family: var(--font-sans);
+      }
+
+      .prompt-card.is-active {
+        display: block;
+        animation: prompt-fade 0.25s var(--ease) both;
+      }
+
+      .prompt-card:hover {
+        border-color: rgba(0,0,0,0.14);
+        background: var(--surface);
+      }
+
+      .prompt-card:active {
+        transform: scale(0.995);
+      }
+
+      .prompt-text {
+        font-size: 15px;
+        line-height: 1.55;
+        color: var(--text-primary);
+        font-weight: 400;
+      }
+
+      .prompt-copy,
+      .prompt-check {
+        position: absolute;
+        top: 50%;
+        right: 18px;
+        transform: translateY(-50%);
+        color: var(--text-faint);
+        flex-shrink: 0;
+        transition: color 0.15s;
+      }
+
+      .prompt-card:hover .prompt-copy {
+        color: var(--text-primary);
+      }
+
+      .prompt-check {
+        display: none;
+        color: var(--green);
+      }
+
+      .prompt-card.is-copied .prompt-copy { display: none; }
+      .prompt-card.is-copied .prompt-check { display: block; }
+
+      @keyframes prompt-fade {
+        from { opacity: 0; transform: translateY(4px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      @media (max-width: 640px) {
+        .prompts-section {
+          padding: 16px 16px 48px;
+        }
+
+        .prompts-subtitle {
+          font-size: 13px;
+          margin-top: -24px;
+          margin-bottom: 24px;
+        }
+
+        .prompts-tab {
+          font-size: 12px;
+          padding: 7px 12px;
+        }
+
+        .prompt-card {
+          padding: 18px 48px 18px 18px;
+        }
+
+        .prompt-text {
+          font-size: 14px;
+        }
+      }
+
       /* ─── Steps ─── */
       .steps-section {
         padding: 64px 24px 80px;
@@ -285,6 +474,44 @@ import '../styles/global.css';
         }
       }
     </style>
+
+    <script>
+      const tabs = document.querySelectorAll<HTMLButtonElement>('.prompts-tab');
+      const cards = document.querySelectorAll<HTMLButtonElement>('.prompt-card');
+
+      tabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          const key = tab.dataset.prompt;
+          tabs.forEach((t) => {
+            const active = t === tab;
+            t.classList.toggle('is-active', active);
+            t.setAttribute('aria-selected', active ? 'true' : 'false');
+          });
+          cards.forEach((c) => {
+            c.classList.toggle('is-active', c.dataset.prompt === key);
+            c.classList.remove('is-copied');
+          });
+        });
+      });
+
+      cards.forEach((card) => {
+        card.addEventListener('click', async () => {
+          const text = card.querySelector('.prompt-text')?.textContent?.trim() || '';
+          try {
+            await navigator.clipboard.writeText(text);
+            card.classList.add('is-copied');
+            setTimeout(() => card.classList.remove('is-copied'), 1500);
+            if (typeof (window as any).gtag === 'function') {
+              (window as any).gtag('event', 'copy_prompt', {
+                event_category: 'engagement',
+                event_label: card.dataset.prompt,
+              });
+            }
+          } catch {}
+        });
+      });
+    </script>
+
     <Analytics />
   </body>
 </html>
