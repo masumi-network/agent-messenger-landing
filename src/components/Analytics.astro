@@ -44,65 +44,125 @@
       banner.style.display = 'none';
       if (typeof gtag === 'function') {
         gtag('consent', 'update', { analytics_storage: 'granted' });
+        gtag('event', 'cookie_consent', { event_category: 'engagement', event_label: 'accepted' });
       }
     });
 
     document.getElementById('cookieDecline').addEventListener('click', function() {
       localStorage.setItem('cookie-consent', 'declined');
       banner.style.display = 'none';
+      if (typeof gtag === 'function') {
+        gtag('event', 'cookie_consent', { event_category: 'engagement', event_label: 'declined' });
+      }
     });
 
     // ─── Event tracking ───
+    //
+    // All events are sent with a consistent shape:
+    //   event_name: a short, descriptive snake_case verb_noun
+    //   event_label: a lowercase slug identifying the variant
+    //
+    // In GA4 reports you'll see each action as its own event row:
+    //   copy_install_command  · hero / steps
+    //   copy_example_prompt   · outreach / delegate / schedule / notify
+    //   view_terminal_tab     · inbox / channels / chat / payments / agents
+    //   open_agent_chat       · luna / vinny / yuki
+    //   open_channel          · dream-club / joke-off / haiku-garden
+    //   click_product         · sokosumi / masumi / kodosumi / agent-messenger
+    //   click_external_link   · <destination>_<location>   e.g. github_nav
+    //   cookie_consent        · accepted / declined
 
-    // CLI copy button
-    var installBtn = document.getElementById('installBtn');
-    if (installBtn) {
-      installBtn.addEventListener('click', function() {
-        if (typeof gtag === 'function') {
-          gtag('event', 'copy_cli_command', {
-            event_category: 'engagement',
-            event_label: 'CLI Install Command'
-          });
-        }
-      });
+    function track(name, label, extra) {
+      if (typeof gtag !== 'function') return;
+      var params = { event_category: 'engagement', event_label: label || '' };
+      if (extra) {
+        for (var k in extra) if (Object.prototype.hasOwnProperty.call(extra, k)) params[k] = extra[k];
+      }
+      gtag('event', name, params);
     }
 
-    // GitHub button (nav)
-    document.querySelectorAll('a[href*="github.com"]').forEach(function(link) {
-      link.addEventListener('click', function() {
-        if (typeof gtag === 'function') {
-          gtag('event', 'click_github', {
-            event_category: 'engagement',
-            event_label: link.textContent.trim() || 'GitHub'
-          });
-        }
+    // 1. Install command copy — hero + step 1
+    var heroInstall = document.getElementById('installBtn');
+    if (heroInstall) {
+      heroInstall.addEventListener('click', function() { track('copy_install_command', 'hero'); });
+    }
+    var stepInstall = document.getElementById('stepInstallBtn');
+    if (stepInstall) {
+      stepInstall.addEventListener('click', function() { track('copy_install_command', 'steps'); });
+    }
+
+    // 2. Example prompt copy — outreach / delegate / schedule / notify
+    document.querySelectorAll('.prompt-card').forEach(function(card) {
+      card.addEventListener('click', function() {
+        track('copy_example_prompt', card.getAttribute('data-prompt') || 'unknown');
       });
     });
 
-    // Product dropdown clicks
+    // 3. Terminal demo — tab views
+    document.querySelectorAll('.terminal .tab').forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        track('view_terminal_tab', tab.getAttribute('data-view') || 'unknown');
+      });
+    });
+
+    // 4. Terminal demo — opening a specific thread
+    document.querySelectorAll('.terminal .inbox-item[data-agent]').forEach(function(item) {
+      item.addEventListener('click', function() {
+        track('open_agent_chat', item.getAttribute('data-agent') || 'unknown', { source: 'inbox' });
+      });
+    });
+    document.querySelectorAll('.terminal .agent-row[data-agent]').forEach(function(row) {
+      row.addEventListener('click', function() {
+        track('open_agent_chat', row.getAttribute('data-agent') || 'unknown', { source: 'agents_tab' });
+      });
+    });
+    document.querySelectorAll('.terminal .channel-row[data-channel]').forEach(function(row) {
+      row.addEventListener('click', function() {
+        track('open_channel', row.getAttribute('data-channel') || 'unknown');
+      });
+    });
+
+    // 5. Product switcher (nav dropdown)
     document.querySelectorAll('.dropdown-item').forEach(function(item) {
       item.addEventListener('click', function() {
         var name = item.querySelector('.dropdown-name');
-        if (typeof gtag === 'function' && name) {
-          gtag('event', 'click_product', {
-            event_category: 'navigation',
-            event_label: name.textContent.trim()
-          });
-        }
+        var slug = name ? name.textContent.trim().toLowerCase().replace(/\s+/g, '-') : 'unknown';
+        track('click_product', slug);
       });
     });
 
-    // Terminal tab clicks
-    document.querySelectorAll('.terminal .tab').forEach(function(tab) {
-      tab.addEventListener('click', function() {
-        if (typeof gtag === 'function') {
-          gtag('event', 'click_terminal_tab', {
-            event_category: 'engagement',
-            event_label: tab.dataset.view
-          });
-        }
+    // 6. External links — labeled <destination>_<location>
+    var DEST_MAP = [
+      { match: 'github.com', name: 'github' },
+      { match: 'discord.com', name: 'discord' },
+      { match: 'x.com', name: 'x' },
+      { match: 'twitter.com', name: 'x' },
+      { match: 'skills.sh', name: 'skills_sh' },
+      { match: 'masumi.network', name: 'masumi' },
+      { match: 'sokosumi.com', name: 'sokosumi' },
+      { match: 'kodosumi.io', name: 'kodosumi' },
+      { match: 'nmkr.io', name: 'nmkr' },
+      { match: 'serviceplan.com', name: 'serviceplan' }
+    ];
+    document.querySelectorAll('a[href^="http"]').forEach(function(link) {
+      var href = link.getAttribute('href') || '';
+      var dest = 'other';
+      for (var i = 0; i < DEST_MAP.length; i++) {
+        if (href.indexOf(DEST_MAP[i].match) !== -1) { dest = DEST_MAP[i].name; break; }
+      }
+      var loc = 'other';
+      if (link.classList.contains('skills-badge')) loc = 'skills_badge';
+      else if (link.closest) {
+        if (link.closest('.site-nav')) loc = 'nav';
+        else if (link.closest('.mobile-menu')) loc = 'mobile_menu';
+        else if (link.closest('.site-footer')) loc = 'footer';
+      }
+      link.addEventListener('click', function() {
+        track('click_external_link', dest + '_' + loc, { link_url: href });
       });
     });
+
+    // 7. Cookie consent (wired into existing accept/decline handlers above)
   })();
 </script>
 

@@ -847,12 +847,6 @@ import '../styles/global.css';
               if (check) check.style.display = 'none';
               stepBtn.classList.remove('is-copied');
             }, 1500);
-            if (typeof (window as any).gtag === 'function') {
-              (window as any).gtag('event', 'copy_cli_command', {
-                event_category: 'engagement',
-                event_label: 'Steps CLI Install Command',
-              });
-            }
           } catch {}
         });
       }
@@ -869,12 +863,6 @@ import '../styles/global.css';
               card.classList.remove('is-copied');
               if (label) label.textContent = 'Copy';
             }, 1500);
-            if (typeof (window as any).gtag === 'function') {
-              (window as any).gtag('event', 'copy_prompt', {
-                event_category: 'engagement',
-                event_label: card.dataset.prompt,
-              });
-            }
           } catch {}
         });
       });
