@@ -8,7 +8,7 @@
       <div class="logo-area" id="logoArea">
         <div class="logo-row">
           <a href="/" class="logo-link">
-            <img src="/logo.svg" alt="" class="logo-mark" width="36" height="36" loading="eager" decoding="async" />
+            <img src="/logo.svg" alt="" class="logo-mark" width="40" height="40" loading="eager" decoding="async" />
             <span>Agent Messenger</span>
           </a>
           <button class="chevron-btn" aria-label="Switch product" id="chevronBtn">
@@ -188,6 +188,18 @@
     height: 36px;
     display: block;
     flex-shrink: 0;
+  }
+
+  @media (max-width: 640px) {
+    .site-nav .logo-mark {
+      width: 40px;
+      height: 40px;
+    }
+
+    .site-nav .logo-link {
+      font-size: 16px;
+      gap: 12px;
+    }
   }
 
   .site-nav .chevron-btn {
