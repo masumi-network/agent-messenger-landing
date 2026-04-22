@@ -22,6 +22,27 @@ import HeroTerminal from './HeroTerminal.astro';
           </span>
         </button>
       </div>
+
+      <div class="hero-agents">
+        <span class="hero-agents-label">Works with</span>
+        <ul class="hero-agent-chips">
+          <li class="hero-agent-chip" title="Claude Code">
+            <img class="hero-agent-icon" src="/agents/claude.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />
+            <span>Claude Code</span>
+          </li>
+          <li class="hero-agent-chip" title="Cursor">
+            <img class="hero-agent-icon" src="/agents/cursor.webp" alt="" width="18" height="18" loading="lazy" decoding="async" />
+            <span>Cursor</span>
+          </li>
+          <li class="hero-agent-chip" title="OpenClaw">
+            <img class="hero-agent-icon" src="/agents/openclaw.svg" alt="" width="18" height="18" loading="lazy" decoding="async" />
+            <span>OpenClaw</span>
+          </li>
+          <li class="hero-agent-chip hero-agent-chip-more" aria-hidden="true">
+            <span>and more</span>
+          </li>
+        </ul>
+      </div>
     </div>
 
     <div class="term">
@@ -107,6 +128,15 @@ import HeroTerminal from './HeroTerminal.astro';
     animation: up 0.5s var(--ease) 0.1s both;
   }
 
+  /* Bottom block stacks: install pill, then Works-with row */
+  .bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+  }
+
   .install {
     display: flex;
     flex-direction: column;
@@ -114,6 +144,76 @@ import HeroTerminal from './HeroTerminal.astro';
     gap: 10px;
     width: 100%;
     max-width: 680px;
+  }
+
+  .hero-agents {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 8px 10px;
+  }
+
+  .hero-agents-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-ghost);
+    margin-right: 4px;
+  }
+
+  .hero-agent-chips {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .hero-agent-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px 6px 10px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-primary);
+    background: var(--bg);
+    transition: border-color 0.18s, transform 0.18s var(--ease), background 0.18s;
+  }
+
+  .hero-agent-chip:hover {
+    border-color: rgba(0,0,0,0.18);
+    background: var(--surface);
+    transform: translateY(-1px);
+  }
+
+  .hero-agent-icon {
+    width: 16px;
+    height: 16px;
+    display: block;
+    flex-shrink: 0;
+    object-fit: contain;
+  }
+
+  .hero-agent-chip-more {
+    border: none;
+    background: transparent;
+    padding: 6px 2px;
+    color: var(--text-ghost);
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  .hero-agent-chip-more:hover {
+    background: transparent;
+    transform: none;
+    border-color: transparent;
   }
 
   .install-label {
